@@ -16,4 +16,4 @@ MonoBehaviour:
   DisplayName: Test Item 2
   Description: Big
   Icon: {fileID: 0}
-  MaxStackSize: 0
+  MaxStackSize: 1
