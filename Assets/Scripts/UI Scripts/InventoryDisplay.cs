@@ -29,13 +29,8 @@ public abstract class InventoryDisplay : MonoBehaviour
         }
     }
 
-	public void SlotClicked(InventorySlot_UI clickedUISlot)
+	public void SlotClicked(InventorySlot_UI clickedSlot)
 	{
-		if (clickedUISlot.AssignedInventorySlot.ItemData != null && mouseInventoryItem.AssignedInventorySlot.ItemData == null)
-		{
-			mouseInventoryItem.UpdateMouseSlot(clickedUISlot.AssignedInventorySlot);
-			clickedUISlot.ClearSlot();
-			return;
-		}
+		Debug.Log("Slot clicked");
 	}
 }
