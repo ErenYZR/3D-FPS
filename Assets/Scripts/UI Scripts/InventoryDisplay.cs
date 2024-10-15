@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -36,6 +37,14 @@ public abstract class InventoryDisplay : MonoBehaviour
 			mouseInventoryItem.UpdateMouseSlot(clickedUISlot.AssignedInventorySlot);
 			clickedUISlot.ClearSlot();
 			return;
+		}
+
+		if (clickedUISlot.AssignedInventorySlot.ItemData == null && mouseInventoryItem.AssignedInventorySlot.ItemData != null)
+		{
+			clickedUISlot.AssignedInventorySlot.AssignItem(mouseInventoryItem.AssignedInventorySlot);
+			clickedUISlot.UpdateUISlot();
+
+			mouseInventoryItem.ClearSlot();
 		}
 	}
 }

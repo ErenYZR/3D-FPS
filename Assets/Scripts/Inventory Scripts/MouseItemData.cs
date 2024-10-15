@@ -39,7 +39,7 @@ public class MouseItemData : MonoBehaviour
 		}
 	}
 
-	private void ClearSlot()
+	public void ClearSlot()
 	{
 		AssignedInventorySlot.ClearSlot();
 		ItemCount.text = "";
