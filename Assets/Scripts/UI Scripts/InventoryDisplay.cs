@@ -32,13 +32,14 @@ public abstract class InventoryDisplay : MonoBehaviour
 
 	public void SlotClicked(InventorySlot_UI clickedUISlot)
 	{
+		//Slottaki eþyayý elimize alma
 		if(clickedUISlot.AssignedInventorySlot.ItemData != null && mouseInventoryItem.AssignedInventorySlot.ItemData == null)
 		{
 			mouseInventoryItem.UpdateMouseSlot(clickedUISlot.AssignedInventorySlot);
 			clickedUISlot.ClearSlot();
 			return;
 		}
-
+		//Elimizdeki eþyayý slota koyma
 		if (clickedUISlot.AssignedInventorySlot.ItemData == null && mouseInventoryItem.AssignedInventorySlot.ItemData != null)
 		{
 			clickedUISlot.AssignedInventorySlot.AssignItem(mouseInventoryItem.AssignedInventorySlot);
@@ -46,5 +47,25 @@ public abstract class InventoryDisplay : MonoBehaviour
 
 			mouseInventoryItem.ClearSlot();
 		}
+		//Elimizde ve slotta eþya varsa...
+        if (clickedUISlot.AssignedInventorySlot.ItemData != null && mouseInventoryItem.AssignedInventorySlot.ItemData != null)
+        {
+            if (clickedUISlot.AssignedInventorySlot.ItemData != mouseInventoryItem.AssignedInventorySlot.ItemData)
+            {
+				SwapSlots(clickedUISlot);
+            }
+        }
+    }
+
+	private void SwapSlots(InventorySlot_UI clickedUISlot)
+	{
+		var clonedSlot = new InventorySlot(mouseInventoryItem.AssignedInventorySlot.ItemData, mouseInventoryItem.AssignedInventorySlot.StackSize);
+		mouseInventoryItem.ClearSlot();
+
+		mouseInventoryItem.UpdateMouseSlot(clickedUISlot.AssignedInventorySlot);
+		clickedUISlot.ClearSlot();
+
+		clickedUISlot.AssignedInventorySlot.AssignItem(clonedSlot);
+		clickedUISlot.UpdateUISlot();
 	}
 }
