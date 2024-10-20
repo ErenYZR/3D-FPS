@@ -2,20 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Deneme : MonoBehaviour
+public class deneme2 : MonoBehaviour
 {
-
-    public Rigidbody body;
-
+    public Rigidbody rb2;
     // Start is called before the first frame update
     void Start()
     {
-       body = GetComponent<Rigidbody>();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        body.velocity = Vector3.up;
+        
     }
 }
