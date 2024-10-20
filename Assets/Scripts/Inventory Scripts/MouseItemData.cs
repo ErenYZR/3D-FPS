@@ -9,7 +9,7 @@ using UnityEngine.EventSystems;
 public class MouseItemData : MonoBehaviour
 {
     public Image ItemSprite;
-    public TextMeshProUGUI ItemCount;
+	public TextMeshProUGUI ItemCount;
 	public InventorySlot AssignedInventorySlot;
 
 	private void Awake()

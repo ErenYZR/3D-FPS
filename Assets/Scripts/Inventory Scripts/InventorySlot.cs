@@ -46,16 +46,16 @@ public class InventorySlot
 		stackSize = amount;
 	}
 
-	public bool RoomLeftInStack(int amountToAdd, out int amountRemaining)
+	public bool EnoughRoomLeftInStack(int amountToAdd, out int amountRemaining)
 	{
 		amountRemaining = ItemData.MaxStackSize - stackSize;
 
-		return RoomLeftInStack(amountToAdd);
+		return EnoughRoomLeftInStack(amountToAdd);
 	}
 	
-	public bool RoomLeftInStack(int amountToAdd)
+	public bool EnoughRoomLeftInStack(int amountToAdd)
 	{
-		if (stackSize + amountToAdd <= itemData.MaxStackSize) return true;
+		if (itemData == null || itemData != null && stackSize + amountToAdd <= itemData.MaxStackSize) return true;
 		else return false;
 	}
 
@@ -71,7 +71,7 @@ public class InventorySlot
 
 	public bool SplitStack(out InventorySlot splitStack)
 	{
-		if(StackSize <= 1)
+		if(StackSize <= 1)//Bölmeye yetecek kadar eþya var mý?
 		{
 			splitStack = null;
 			return false;

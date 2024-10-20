@@ -64,7 +64,7 @@ public abstract class InventoryDisplay : MonoBehaviour
         {
 			bool isSameItem = clickedUISlot.AssignedInventorySlot.ItemData == mouseInventoryItem.AssignedInventorySlot.ItemData;//Mousela elimizde ayný eþya mý var ?
 
-			if (isSameItem	&& clickedUISlot.AssignedInventorySlot.RoomLeftInStack(mouseInventoryItem.AssignedInventorySlot.StackSize))
+			if (isSameItem	&& clickedUISlot.AssignedInventorySlot.EnoughRoomLeftInStack(mouseInventoryItem.AssignedInventorySlot.StackSize))
 			{ //Eþyalar ayný ise ve toplamýnda yýðýn dolmuyorsa
 				clickedUISlot.AssignedInventorySlot.AssignItem(mouseInventoryItem.AssignedInventorySlot);
 				clickedUISlot.UpdateUISlot();
@@ -73,7 +73,7 @@ public abstract class InventoryDisplay : MonoBehaviour
 				return;
 			}
 			else if(isSameItem &&
-				!clickedUISlot.AssignedInventorySlot.RoomLeftInStack(mouseInventoryItem.AssignedInventorySlot.StackSize, out int leftInStack))
+				!clickedUISlot.AssignedInventorySlot.EnoughRoomLeftInStack(mouseInventoryItem.AssignedInventorySlot.StackSize, out int leftInStack))
             {
 				if (leftInStack < 1) SwapSlots(clickedUISlot); //Yýðýn dolu olduðu için eþyalarý takaslýyoruz.
                 else //Yýðýn dolu olmadýðý için mouse'dan gerektiði kadar eþya alýyoruz.
